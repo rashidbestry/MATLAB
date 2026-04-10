@@ -1,0 +1,110 @@
+% Input from user
+clc; clear; close all;
+
+disp("Matlab dersi uygulamasi!");
+
+a = input("Lütfen sayi giriniz: ");
+
+if (a > 0)
+    disp("Sayi pozitiftir!")
+elseif (a < 0) 
+    disp("Sayi negatiftir!")
+else
+    disp("Sayi sifirdir!")
+end
+
+%% Loops
+
+for i = 1:1
+    disp(i);
+end
+
+
+
+while (i < 10)
+    i = i + 1;
+    disp(i)
+end
+
+%% Matrix creation
+
+for i = 1:10
+    for j = 1:10
+        A(i,j) = i * j;
+    end
+end
+disp(A)
+
+%% Vector print
+
+v = [10,20,30,40,50];
+
+for i = 1:length(v)
+    fprintf('v(%d) = %d\n', i , v(i))
+end
+
+%% Matrix & Vectors
+
+disp("Matrix and Vectors")
+v = [1 2 3 4 5];
+A = [1 2; 3 4];
+B = A * A
+disp(v);
+disp(B);
+disp(A);
+disp(inv(A))
+
+%% 2D Graphic
+
+x = linspace(0,10);
+y = sin(x);
+
+figure;
+plot(x,y, "r","LineWidth",1);
+xlabel("X ekseni");
+ylabel("Y ekseni");
+title("Sinus Fonksiyonu")
+grid on
+
+%% 3D Graphic
+
+[X, Y] = meshgrid(-5:0.5:5, -5:0.5:5);
+Z = sin(sqrt(X.^2 + Y.^2));
+
+figure;
+surf(X,Y,Z)
+
+%% Lineer equation system
+disp("Lineer denklem çözümü Ax = b")
+
+A = [2 -1 3; 4 3 -2; -3 1 4];
+b = [5; 7; 2];
+
+x = A\b; % backslash operator, also called the matrix left division operator
+disp("Çözüm vektörü:")
+disp(x)
+
+%% Numerical Türev ve İntegral
+
+syms x 
+f = x^3 - 5*x^2 + 2*x + 8;
+
+disp("Türev:")
+df = diff(f);
+disp(df)
+
+disp("Belirli Integral [0 , 2]: ")
+integral_value = int(f, 0, 2);
+disp(integral_value);
+
+%% User defined function
+
+disp("Kullanici tanımlı fonksiyon ile kare hesaplama:")
+number = input("Enter the number: ");
+sonuc = kareHesaplama(number);
+fprintf("%d'nin karesi: %d\n", number, sonuc)
+
+function sonuc = kareHesaplama(x)
+    sonuc = x^2;
+end
+
